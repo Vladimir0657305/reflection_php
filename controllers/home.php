@@ -4,9 +4,9 @@ class CHome
 {
     protected MArticles $model;
 
-    public function __construct()
+    public function __construct(MArticles $model)
     {
-        $this->model = new MArticles();
+        $this->model = $model;
     }
 
     public function run()
@@ -19,5 +19,5 @@ class CHome
         }
 
     }
-    
+
 }
