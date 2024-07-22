@@ -10,3 +10,4 @@ include_once ('utils/session.php');
 
 $controller = new CShop();
 $controller->run();
+
