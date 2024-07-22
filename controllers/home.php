@@ -1,10 +1,11 @@
 <?php
+include_once 'contracts/controller.php';
 
-class CHome
+class CHome implements Controller
 {
-    protected MArticles $model;
+    protected Model $model;
 
-    public function __construct(MArticles $model)
+    public function __construct(Model $model)
     {
         $this->model = $model;
     }

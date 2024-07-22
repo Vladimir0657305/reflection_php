@@ -1,6 +1,7 @@
 <?php
+include_once 'contracts/storage.php';
 
-class Session
+class Session implements Storage
 {
     public function __construct()
     {
