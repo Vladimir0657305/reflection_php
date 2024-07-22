@@ -3,11 +3,13 @@
 class CShop
 {
     protected MArticles $model;
+    protected Session $session;
 
-    public function __construct()
+    public function __construct(MArticles $model, Session $session)
     {
-        $this->model = new MArticles();
-        Session::set('test', mt_rand(1, 10));
+        $this->model = $model;
+        $this->session = $session;
+        $this->session->set('test', mt_rand(1, 10));
     }
 
     public function run()
@@ -19,7 +21,7 @@ class CShop
             echo "<hr><h2>{$art['title']}</h2>";
         }
 
-        $val = Session::slice('test');
+        $val = $this->session->get('test');
         echo "<div>And other string - $val</div>";
     }
 }

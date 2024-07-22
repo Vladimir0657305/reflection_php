@@ -2,19 +2,21 @@
 
 class Session
 {
-    public static function set(string $name, mixed $value)
+    public function __construct()
     {
-        self::mbStart();
+        session_start();
+    }
+
+    public function set(string $name, mixed $value)
+    {
         $_SESSION[$name] = $value;
     }
-    public static function get(string $name): mixed
+    public function get(string $name): mixed
     {
-        self::mbStart();
         return $_SESSION[$name] ?? null;
     }
-    public static function slice(string $name): mixed
+    public function slice(string $name): mixed
     {
-        self::mbStart();
         $val = null;
         if (isset($_SESSION[$name])) {
             $val = $_SESSION[$name];
@@ -22,10 +24,5 @@ class Session
         }
         return $val;
     }
-    protected static function mbStart()
-    {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-    }
+
 }
