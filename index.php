@@ -12,6 +12,11 @@ include_once 'utils/logger.php';
 class Container
 {
     protected array $binds = [];
+
+    public function bind(string $type, string $subtype)
+    {
+        $this->binds[$type] = $subtype;
+    }
     public function resolveClass($classname)
     {
         $ref = new ReflectionClass($classname);
@@ -23,6 +28,10 @@ class Container
             $attrs = $constr->getParameters();
             foreach ($attrs as $attr) {
                 $name = $attr->getType()->getName();
+                if(isset($this->binds[$name]))
+                {
+                    $name = $this->binds[$name];
+                }
                 $deps[] = $this->resolveClass($name);
             }
         }
@@ -33,6 +42,9 @@ class Container
 
 
 $container = new Container();
+$container->bind(Model::class, MArticles::class);
+$container->bind(Storage::class, Session::class);
+
 $controller = $container->resolveClass(CShop::class);
 $controller->run();
 
