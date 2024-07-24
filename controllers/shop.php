@@ -6,7 +6,7 @@ class CShop implements Controller
     protected Model $model;
     protected Storage $session;
 
-    public function __construct(Model $model, Storage $session)
+    public function __construct(MArticles $model, Session $session)
     {
         $this->model = $model;
         $this->session = $session;
