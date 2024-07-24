@@ -3,10 +3,8 @@
 include_once 'contracts/controller.php';
 include_once 'contracts/model.php';
 include_once 'contracts/storage.php';
-include_once 'contracts/itrack.php';
 include_once 'controllers/home.php';
 include_once 'controllers/shop.php';
-include_once 'controllers/track.php';
 include_once 'models/articles.php';
 include_once 'utils/session.php';
 include_once 'utils/logger.php';
@@ -42,17 +40,12 @@ class Container
 }
 
 
-// $container = new Container();
-// $container->bind(Model::class, MArticles::class);
-// $container->bind(Storage::class, Session::class);
+$container = new Container();
+$container->bind(Model::class, MArticles::class);
+$container->bind(Storage::class, Session::class);
 
-// $controller = $container->resolveClass(CShop::class);
-// $controller->run();
-
-$cont = new Container();
-$cont->bind(Model::class, MArticles::class);
-$cont = $cont->resolveClass(Track::class);
-$cont->go();
+$controller = $container->resolveClass(CShop::class);
+$controller->run();
 
 // $mArticles = new MArticles();
 // $session = new Session();
