@@ -13,7 +13,7 @@ class Track implements Itrack
 
     public function go()
     {
-        $articles= $this->model->all();
+        $articles = $this->model->all();
 
         echo "<h2>Title second controller</h2>";
 
