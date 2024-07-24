@@ -3,6 +3,7 @@
 include_once 'contracts/controller.php ';
 include_once 'contracts/model.php ';
 include_once 'contracts/storage.php ';
+include_once 'contracts/itrack.php ';
 include_once 'controllers/home.php';
 include_once 'controllers/shop.php';
 include_once 'models/articles.php';
@@ -28,8 +29,7 @@ class Container
             $attrs = $constr->getParameters();
             foreach ($attrs as $attr) {
                 $name = $attr->getType()->getName();
-                if(isset($this->binds[$name]))
-                {
+                if (isset($this->binds[$name])) {
                     $name = $this->binds[$name];
                 }
                 $deps[] = $this->resolveClass($name);
@@ -41,12 +41,17 @@ class Container
 }
 
 
-$container = new Container();
-$container->bind(Model::class, MArticles::class);
-$container->bind(Storage::class, Session::class);
+// $container = new Container();
+// $container->bind(Model::class, MArticles::class);
+// $container->bind(Storage::class, Session::class);
 
-$controller = $container->resolveClass(CShop::class);
-$controller->run();
+// $controller = $container->resolveClass(CShop::class);
+// $controller->run();
+
+$contr = new Container();
+$contr->bind(Model::class, MArticles::class);
+$contr = $container->resolveClass(Track::class);
+$contr->go();
 
 // $mArticles = new MArticles();
 // $session = new Session();
