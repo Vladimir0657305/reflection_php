@@ -1,7 +1,7 @@
 <?php
 include_once 'contracts/controller.php';
 
-class CShop implements Controller
+class Shop implements Controller
 {
     protected Model $model;
     protected Storage $session;

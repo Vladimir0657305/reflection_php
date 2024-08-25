@@ -1,7 +1,7 @@
 <?php
 include_once 'contracts/controller.php';
 
-class CHome implements Controller
+class Home implements Controller
 {
     protected Model $model;
 
