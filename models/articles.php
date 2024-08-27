@@ -2,8 +2,16 @@
 
 class Articles
 {
+    protected Logger $logger;
+
+    public function __construct(Logger $logger) 
+    {
+        $this->logger = $logger;
+    }
     public function all()
     {
+        $this->logger->write("I am take all");
+        
         return [
             ['id' => 1, 'title' => "Article " . mt_rand(1, 10) . " from DB"],
             ['id' => 2, 'title' => "Article " . mt_rand(11, 20) . " from DB"],
