@@ -7,7 +7,7 @@ include_once 'controllers/home.php';
 include_once 'controllers/shop.php';
 include_once 'models/articles.php';
 include_once 'utils/session.php';
-include_once 'utils/logger.php';
+// include_once 'utils/logger.php';
 
 class Container
 {
@@ -41,10 +41,10 @@ class Container
 
 
 $container = new Container();
-$container->bind(Model::class, MArticles::class);
+$container->bind(Model::class, Articles::class);
 $container->bind(Storage::class, Session::class);
 
-$controller = $container->resolveClass(CShop::class);
+$controller = $container->resolveClass(Shop::class);
 $controller->run();
 
 // $mArticles = new MArticles();
