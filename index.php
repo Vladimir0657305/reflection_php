@@ -47,6 +47,9 @@ $container->bind(Storage::class, Session::class);
 $controller = $container->resolveClass(Shop::class);
 $controller->run();
 
+$controller2 = $container->resolveClass(Shop::class);
+$controller2->run();
+
 // $mArticles = new MArticles();
 // $session = new Session();
 
