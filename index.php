@@ -44,7 +44,7 @@ $container = new Container();
 $container->bind(Model::class, Articles::class);
 $container->bind(Storage::class, Session::class);
 
-$controller = $container->resolveClass(Shop::class);
+$controller = $container->resolveClass(Home::class);
 $controller->run();
 
 $controller2 = $container->resolveClass(Shop::class);
